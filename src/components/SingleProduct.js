@@ -1,46 +1,39 @@
-import Button from "@mui/material/Button";
-import { styled } from "@mui/system";
-import React from "react";
-
-const ProductContainer = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  marginBottom: "20px",
-  boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.2)",
-  padding: "10px",
-  borderRadius: "5px",
-});
-
-const ProductImage = styled("img")({
-  width: "150px", // Fixed image size
-  height: "150px", // Fixed image size
-  marginBottom: "10px",
-});
-
-const ProductName = styled("h3")({
-  marginBottom: "5px",
-});
-
-const ProductPrice = styled("p")({
-  fontWeight: "bold",
-  marginBottom: "10px",
-});
-
-const AddButton = styled(Button)({
-  marginTop: "10px",
-});
+import { Button } from "@mui/material";
+import React, { useContext } from "react";
+import { CartContext } from "./CartContext";
+import "./styles.css";
 
 function SingleProduct({ product }) {
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+
   return (
-    <ProductContainer>
+    <div className="productContainer">
       <div key={product.id} className="product">
-        <ProductImage src={product.image} alt={product.name} />
-        <ProductName>{product.name}</ProductName>
-        <ProductPrice>{product.price.substring(0, 3)}</ProductPrice>
+        <img src={product.image} alt={product.name} className="productImage" />
+        <h3 className="productName">{product.name}</h3>
+        <p className="productPrice">Rs. {product.price.substring(0, 3)}/=</p>
       </div>
-      <AddButton variant="contained">Add to cart</AddButton>
-    </ProductContainer>
+      <div className="addButton">
+        <Button
+          variant="contained"
+          style={{
+            width: "200px",
+            marginTop: "10px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "block",
+            textAlign: "center", // Added to center text within the button
+          }}
+          onClick={handleAddToCart}
+        >
+          Add to cart
+        </Button>
+      </div>
+    </div>
   );
 }
 

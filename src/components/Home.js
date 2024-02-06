@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
-import React, { useState } from "react";
+import React from "react";
 import SingleProduct from "./SingleProduct";
+faker.seed(123);
 
 function Home() {
   const productsArray = [...Array(20)].map(() => ({
@@ -10,14 +11,12 @@ function Home() {
     image: faker.image.avatar(),
   }));
 
-  const [product] = useState(productsArray);
-  console.log(productsArray);
   return (
     <div>
       <h1>Home</h1>
       <div className="productContainer">
-        {product.map((product) => (
-          <SingleProduct product={product}></SingleProduct>
+        {productsArray.map((product) => (
+          <SingleProduct key={product.id} product={product}></SingleProduct>
         ))}
       </div>
     </div>
