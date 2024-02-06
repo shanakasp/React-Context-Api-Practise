@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "./Context";
+import SingleProduct from "./SingleProduct";
 
 function CartPage() {
   const { cart } = useContext(CartContext);
@@ -10,13 +11,11 @@ function CartPage() {
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul>
-          {cart.map((item) => (
-            <li key={item.id}>
-              {item.name} - Rs. {item.price.slice(0, 3)}/=
-            </li>
+        <div className="productContainer">
+          {cart.map((product) => (
+            <SingleProduct key={product.id} product={product} />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
