@@ -1,10 +1,10 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
-import { CartContext } from "./CartContext";
+import Context from "./Context";
 import "./styles.css";
 
 function SingleProduct({ product }) {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useContext(Context);
 
   const handleAddToCart = () => {
     addToCart(product);
