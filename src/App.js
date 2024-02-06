@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CartPage from "./components/Cart";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </div>
     </BrowserRouter>
