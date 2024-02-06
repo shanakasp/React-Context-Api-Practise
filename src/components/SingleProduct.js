@@ -1,13 +1,13 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
-import Context from "./Context";
+import { CartContext } from "./Context";
 import "./styles.css";
 
 function SingleProduct({ product }) {
-  const { addToCart } = useContext(Context);
+  const { cart, setCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
-    addToCart(product);
+    setCart([...cart, product]);
   };
 
   return (
@@ -15,7 +15,7 @@ function SingleProduct({ product }) {
       <div key={product.id} className="product">
         <img src={product.image} alt={product.name} className="productImage" />
         <h3 className="productName">{product.name}</h3>
-        <p className="productPrice">Rs. {product.price.substring(0, 3)}/=</p>
+        <p className="productPrice">Rs. {product.price.slice(0, 3)}/=</p>
       </div>
       <div className="addButton">
         <Button

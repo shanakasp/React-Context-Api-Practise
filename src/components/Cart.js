@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
-import Context from "./Context";
+import { CartContext } from "./Context";
 
-function Cart() {
-  const { cartItems } = useContext(Context);
+function CartPage() {
+  const { cart } = useContext(CartContext);
 
   return (
     <div>
       <h1>Cart</h1>
-      {cartItems.length === 0 ? (
+      {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
         <ul>
-          {cartItems.map((item, index) => (
-            <li key={index}>
-              {item.name} - Rs. {item.price.substring(0, 3)}/=
+          {cart.map((item) => (
+            <li key={item.id}>
+              {item.name} - Rs. {item.price.slice(0, 3)}/=
             </li>
           ))}
         </ul>
@@ -22,4 +22,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default CartPage;
