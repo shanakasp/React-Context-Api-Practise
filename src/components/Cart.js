@@ -22,6 +22,3 @@ function CartPage() {
 }
 
 export default CartPage;
-//to do list
-//hello
-//done
