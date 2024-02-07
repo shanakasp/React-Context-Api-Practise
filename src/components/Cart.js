@@ -23,4 +23,3 @@ function CartPage() {
 
 export default CartPage;
 
-//hello
